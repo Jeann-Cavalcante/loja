@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug:not(.animated)
+  .animable {
+  opacity: 0;
+}
+svg#freepik_stories-404-error-page-not-found-with-people-connecting-a-plug.animated
+  #freepik--error-404--inject-21 {
+  animation: 1s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) slideDown,
+    1.5s Infinite linear floating;
+  animation-delay: 0s, 1s;
+}
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
