@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="dark:bg-gray-900 dark:text-white h-full pt-[80px]">
+    <div className=" h-full pt-[100px]">
       <h1>Pagina Home</h1>
     </div>
   );
