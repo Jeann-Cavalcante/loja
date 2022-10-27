@@ -10,7 +10,6 @@ const Produtos = () => {
   const { data, loading } = useProdutos(getUrl);
   const [produtos, setProdutos] = useState([]);
   const [tabIndex, setTabIndex] = useState(0);
-  console.log(getUrl);
 
   useEffect(() => {
     function formatarApi() {
