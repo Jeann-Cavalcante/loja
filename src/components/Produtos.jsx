@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useProdutos } from "../hooks/useProdutos";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { Link } from "react-router-dom";
 
 const Produtos = () => {
   const [getUrl, setGetUrl] = useState("https://fakestoreapi.com/products");
@@ -44,7 +45,7 @@ const Produtos = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="">
       {loading && <p>Carregando...</p>}
       <div className="mt-6 flex flex-wrap gap-x-6 gap-y-16 justify-center">
         <Tabs
@@ -65,7 +66,8 @@ const Produtos = () => {
           <TabPanel></TabPanel>
         </Tabs>
         {produtos.map((produto) => (
-          <div
+          <Link
+            to={`/info/${produto.id}`}
             key={produto.id}
             className="group cursor-pointer flex flex-col items-center w-[315px] rounded-md p-2 bg-gray-300 dark:bg-gray-800"
           >
@@ -87,7 +89,7 @@ const Produtos = () => {
                 readOnly
               />
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -12,7 +12,7 @@ const RoutesApp = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/info" element={<Info />} />
+        <Route path="/info/:id" element={<Info />} />
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/favoritos" element={<Favoritos />} />
 

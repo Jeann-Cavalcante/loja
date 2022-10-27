@@ -11,7 +11,7 @@ import { Badge, IconButton, Tooltip } from "@mui/material";
 const Header = () => {
   const { theme, setTheme } = useThemeContext();
   return (
-    <header className="flex fixed shadow-lg  w-full bg-gray-300 dark:bg-gray-800 dark:text-white py-[12px] px-1 justify-around items-center">
+    <header className="flex fixed shadow-lg z-30  w-full bg-gray-300 dark:bg-gray-800 dark:text-white py-[12px] px-1 justify-around items-center">
       <Link
         to="/"
         className="flex items-center text-lg font-bold cursor-pointer"

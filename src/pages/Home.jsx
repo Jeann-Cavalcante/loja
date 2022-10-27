@@ -2,8 +2,7 @@ import Produtos from "../components/Produtos";
 
 const Home = () => {
   return (
-    <div className="  pt-[100px]">
-      <h1>Pagina Home</h1>
+    <div className="pt-[100px] min-h-[100vh]">
       <Produtos />
     </div>
   );
