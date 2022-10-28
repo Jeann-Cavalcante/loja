@@ -25,24 +25,22 @@ const Info = () => {
         currency: "BRL",
       });
       setValor(real);
-      console.log(real);
-      console.log(qtd);
     }
     total();
   }, [info, qtd]);
 
   return (
-    <div className="pt-[100px] flex justify-center items-center">
+    <div className="pt-[100px] pb-5 flex justify-center items-center">
       {info?.map((item) => (
         <div
           key={item.id}
           className="md:flex max-w-[1200px] h-full min-h-[89vh]"
         >
-          <div className="flex-1 min-h-full bg-white flex justify-center rounded-l-lg items-center">
+          <div className="md:flex-1 min-h-full bg-white flex justify-center sm:rounded-l-lg items-center">
             <img className="px-5 py-3" src={item.image} alt={item.title} />
           </div>
 
-          <div className="bg-gray-300 dark:bg-gray-800 rounded-r-lg flex-1 min-h-full p-2">
+          <div className="bg-gray-300 dark:bg-gray-800 sm:rounded-r-lg md:flex-1 min-h-full p-2">
             <h1 className="font-bold text-xl mb-3">{item.title}</h1>
             <h3 className="bg-purple-500 inline p-1 rounded text-fuchsia-300">
               {item.category}
