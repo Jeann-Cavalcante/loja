@@ -50,6 +50,5 @@ export const useProdutos = (url, urlInfo) => {
     getInfo();
   }, [urlInfo]);
 
-  console.log(info);
   return { data, loading, info };
 };
