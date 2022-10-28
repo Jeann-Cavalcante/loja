@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Carrinho from "./pages/Carrinho";
 import Favoritos from "./pages/Favoritos";
@@ -18,6 +19,7 @@ const RoutesApp = () => {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
