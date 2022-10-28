@@ -13,25 +13,36 @@ const Info = () => {
   const [valor, setValor] = useState(null);
 
   useEffect(() => {
-    function total() {
-      let total = [];
-      info.map((i) => {
-        console.log(parseInt(i.preco));
+    async function total() {
+      if (qtd < 1) {
+        setQtd(1);
+      }
+
+      let valoeReais = info[0].price;
+      let valorNumber = valoeReais * 10 * qtd;
+      let real = valorNumber.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
       });
-      setValor(total);
+      setValor(real);
+      console.log(real);
+      console.log(qtd);
     }
     total();
-  }, [qtd]);
+  }, [info, qtd]);
 
   return (
     <div className="pt-[100px] flex justify-center items-center">
       {info?.map((item) => (
-        <div key={item.id} className="md:flex max-w-[1200px] min-h-[89vh]">
-          <div className="flex-1 min-h-full bg-white">
-            <img src={item.image} alt={item.title} />
+        <div
+          key={item.id}
+          className="md:flex max-w-[1200px] h-full min-h-[89vh]"
+        >
+          <div className="flex-1 min-h-full bg-white flex justify-center rounded-l-lg items-center">
+            <img className="px-5 py-3" src={item.image} alt={item.title} />
           </div>
 
-          <div className="bg-gray-300 dark:bg-gray-800 flex-1 p-2">
+          <div className="bg-gray-300 dark:bg-gray-800 rounded-r-lg flex-1 min-h-full p-2">
             <h1 className="font-bold text-xl mb-3">{item.title}</h1>
             <h3 className="bg-purple-500 inline p-1 rounded text-fuchsia-300">
               {item.category}
@@ -46,20 +57,21 @@ const Info = () => {
             </div>
 
             <p>{item.description}</p>
-            <div className="flex mt-5 flex-col items-center justify-around min-h-[40%]">
-              <span className="font-bold">Valor total: {item.preco}</span>
+            <div className="flex mt-5 flex-col items-center justify-around gap-y-8">
+              <span className="font-bold">Valor total: {valor}</span>
 
-              <div>
+              <div class="disabled">
                 <label
                   for="visitors"
                   class="block pl-2 mb-1 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Quatidade
                 </label>
+
                 <input
                   type="number"
                   id="visitors"
-                  class="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:border-2 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-purple-600"
+                  class="bg-gray-50 border disabled outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:border-2 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-purple-600"
                   placeholder=""
                   required
                   value={qtd}
