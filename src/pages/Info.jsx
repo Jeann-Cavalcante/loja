@@ -2,7 +2,8 @@ import { Box, Rating, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import { BsFillCartPlusFill } from "react-icons/bs";
 
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { useCarrinho } from "../hooks/useCarrinho";
 import { useProdutos } from "../hooks/useProdutos";
 
 const Info = () => {
@@ -11,6 +12,8 @@ const Info = () => {
   const { info, loading } = useProdutos(urlInfo);
   const [qtd, setQtd] = useState(1);
   const [valor, setValor] = useState(null);
+  const { carrinho, setCarrinho } = useCarrinho();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function total() {
@@ -28,6 +31,17 @@ const Info = () => {
     }
     total();
   }, [info, qtd]);
+
+  function Carrinho(e) {
+    e.preventDefault();
+
+    let arrayCarrinho = [];
+    arrayCarrinho.push({ valor: valor, qtd: qtd });
+    arrayCarrinho.push(...info);
+    setCarrinho(arrayCarrinho);
+    console.log(carrinho);
+    navigate("/favoritos");
+  }
 
   return (
     <div className="pt-[100px] pb-5 flex justify-center items-center">
@@ -77,7 +91,11 @@ const Info = () => {
                 />
               </div>
 
-              <Link className="bg-purple-700 hover:bg-purple-600 flex justify-around w-[280px] items-center duration-300 py-3 rounded-lg px-2">
+              <Link
+                onClick={Carrinho}
+                to="/favoritos"
+                className="bg-purple-700 hover:bg-purple-600 flex justify-around w-[280px] items-center duration-300 py-3 rounded-lg px-2"
+              >
                 <BsFillCartPlusFill className="fill-white text-2xl" />
                 <span className=" text-white font-bold">
                   Adicionar no carrinho
