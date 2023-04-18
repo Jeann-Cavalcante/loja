@@ -7,21 +7,21 @@ const ListProduct = () => {
   const [data, setData] = useState([]);
   const [total, setTotal] = useState(0);
 
-  const {  setCarrinho } = useCarrinho();
+  const { setCarrinho } = useCarrinho();
 
-  async function removeItem (id) {
+  async function removeItem(id) {
     const carrinho = await getCarrinho();
     const newData = carrinho.filter((item) => item.id !== id);
     SetCarrinho(newData);
     setData(newData);
   }
-    console.log(data);
+  console.log(data);
 
   useEffect(() => {
     async function getProdutos() {
       try {
         const carrinho = await getCarrinho();
-        
+
         setData(carrinho);
       } catch (error) {
         console.log(error);
@@ -51,7 +51,6 @@ const ListProduct = () => {
     getValor();
   }, [data]);
 
-
   return (
     <div>
       <div className=" mb-10 bg-gray-300 dark:bg-gray-800 p-8 round">
@@ -59,6 +58,11 @@ const ListProduct = () => {
         <h3 className="text-center text-xl font-bold mt-4">{total}</h3>
       </div>
 
+      {data.length === 0 && (
+        <div className="flex justify-center items-center">
+          <h2 className="text-2xl font-bold">Carrinho Vazio</h2>
+        </div>
+      )}
       <ul className="flex flex-col gap-y-4">
         {data?.map((item) => (
           <li
