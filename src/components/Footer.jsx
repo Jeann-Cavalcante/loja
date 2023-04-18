@@ -17,17 +17,23 @@ const Footer = () => {
         </Link>
         <ul className="flex gap-x-8 mt-2 flex-wrap text-gray-500  dark:text-gray-400">
           <li>
-            <a href="#" className="text-3xl ">
+            <a href="https://github.com/Jeann-Cavalcante" className="text-3xl ">
               <BsGithub />
             </a>
           </li>
           <li>
-            <a href="#" className="text-3xl">
+            <a
+              href="https://www.linkedin.com/in/jeanncavalcante"
+              className="text-3xl"
+            >
               <BsLinkedin />
             </a>
           </li>
           <li>
-            <a href="#" className="text-3xl">
+            <a
+              href="https://api.whatsapp.com/send?phone=5511995985952&amp;text=Olá, estou entrando em contato através do portfolio"
+              className="text-3xl"
+            >
               <BsWhatsapp />
             </a>
           </li>
