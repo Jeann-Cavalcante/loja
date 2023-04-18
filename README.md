@@ -19,7 +19,7 @@ Estou muito satisfeito com o resultado alcançado e espero que você goste da mi
 
 # Tecnologias utilizadas
 
-## Mobile
+## Front-End
 - React / Axios / fakestoreapi / Tailwind
 
 
