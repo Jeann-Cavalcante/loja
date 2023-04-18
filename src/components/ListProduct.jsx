@@ -37,7 +37,7 @@ const ListProduct = () => {
         const carrinho = await getCarrinho();
         setCarrinho(carrinho.length);
         const total = carrinho.reduce((acc, item) => {
-          return acc + item.priceTotal;
+          return acc + item.priceTotal * item.qtd;
         }, 0);
         let real = total.toLocaleString("pt-BR", {
           style: "currency",
