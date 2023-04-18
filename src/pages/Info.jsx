@@ -76,8 +76,12 @@ const Info = () => {
           key={item.id}
           className="md:flex max-w-[1200px] h-full min-h-[89vh]"
         >
-          <div className="md:flex-1 min-h-full bg-white flex justify-center sm:rounded-l-lg items-center">
-            <img className="px-5 py-3" src={item.image} alt={item.title} />
+          <div className="md:flex-1 md:min-h-full min-h-[300px] bg-white flex justify-center sm:rounded-l-lg items-center">
+            <img
+              className="px-5 py-3 h-[300px] md:h-auto"
+              src={item.image}
+              alt={item.title}
+            />
           </div>
 
           <div className="bg-gray-300 dark:bg-gray-800 sm:rounded-r-lg md:flex-1 min-h-full p-2">
@@ -119,7 +123,7 @@ const Info = () => {
 
               <button
                 onClick={Carrinho}
-                className="bg-purple-700 hover:bg-purple-600 flex justify-around w-[280px] items-center duration-300 py-3 rounded-lg px-2"
+                className="bg-purple-700 mb-8 hover:bg-purple-600 flex justify-around w-[280px] items-center duration-300 py-3 rounded-lg px-2"
               >
                 <BsFillCartPlusFill className="fill-white text-2xl" />
                 <span className=" text-white font-bold">
