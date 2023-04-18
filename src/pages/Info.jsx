@@ -19,6 +19,9 @@ const Info = () => {
 
   async function Carrinho(e) {
     e.preventDefault();
+    if (qtd < 1 || qtd === "") {
+      setQtd(1);
+    }
     const GetCarrinho = await getCarrinho();
     console.log(GetCarrinho);
     let arrayCarrinho = [];
@@ -52,7 +55,7 @@ const Info = () => {
   useEffect(() => {
     async function total() {
       if (qtd < 1) {
-        setQtd(1);
+        setQtd("");
       }
       console.log(info);
       let valorReais = info[0].price;
