@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer class="p-4  w-full mt-[80px] bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
-      <div class="flex flex-col gap-y-5 sm:flex-row items-center sm:justify-between">
+    <footer className="p-4  w-full mt-[80px] bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
+      <div className="flex flex-col gap-y-5 sm:flex-row items-center sm:justify-between">
         <Link
           to="/"
           className="flex items-center text-lg font-bold cursor-pointer"
@@ -15,28 +15,28 @@ const Footer = () => {
             Loja
           </span>
         </Link>
-        <ul class="flex gap-x-8 flex-wrap text-gray-500  dark:text-gray-400">
+        <ul className="flex gap-x-8 flex-wrap text-gray-500  dark:text-gray-400">
           <li>
-            <a href="#" class="md:text-3xl text-5xl ">
+            <a href="#" className="md:text-3xl text-5xl ">
               <BsGithub />
             </a>
           </li>
           <li>
-            <a href="#" class=" md:text-3xl text-5xl  ">
+            <a href="#" className=" md:text-3xl text-5xl  ">
               <BsLinkedin />
             </a>
           </li>
           <li>
-            <a href="#" class=" md:text-3xl text-5xl">
+            <a href="#" className=" md:text-3xl text-5xl">
               <BsWhatsapp />
             </a>
           </li>
         </ul>
       </div>
-      <hr class="my-3 border-gray-200 sm:mx-auto dark:border-gray-700 " />
-      <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+      <hr className="my-3 border-gray-200 sm:mx-auto dark:border-gray-700 " />
+      <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
         © 2022{" "}
-        <a href="https://github.com/Jeann-Cavalcante" class="hover:underline">
+        <a href="https://github.com/Jeann-Cavalcante" className="hover:underline">
           Jeancavalcante
         </a>
         .

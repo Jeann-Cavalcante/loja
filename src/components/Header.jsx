@@ -7,9 +7,11 @@ import {
 import { Link } from "react-router-dom";
 import { useThemeContext } from "../hooks/useThemeContext";
 import { Badge, IconButton, Tooltip } from "@mui/material";
+import { useCarrinho } from "../hooks/useCarrinho";
 
 const Header = () => {
   const { theme, setTheme } = useThemeContext();
+  const { carrinho } = useCarrinho();
   return (
     <header className="flex fixed shadow-lg z-30  w-full bg-gray-300 dark:bg-gray-800 dark:text-white py-[12px] px-1 justify-around items-center">
       <Link
@@ -51,7 +53,7 @@ const Header = () => {
         <Tooltip title="Carrinho">
           <IconButton color="success" className=" ">
             <Link to="carrinho">
-              <Badge badgeContent={0} showZero color="secondary">
+              <Badge badgeContent={carrinho} showZero color="secondary">
                 <MdLocalGroceryStore className="text-xl dark:text-white mb-1 text-gray-800 cursor-pointer " />
               </Badge>
             </Link>

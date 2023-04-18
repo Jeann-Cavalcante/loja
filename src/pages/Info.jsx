@@ -5,24 +5,51 @@ import { BsFillCartPlusFill } from "react-icons/bs";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useCarrinho } from "../hooks/useCarrinho";
 import { useProdutos } from "../hooks/useProdutos";
+import { SetCarrinho, getCarrinho } from "../utils/dbCarrinho";
 
 const Info = () => {
   const { id } = useParams();
   const urlInfo = `https://fakestoreapi.com/products/${id}`;
   const { info, loading } = useProdutos(urlInfo);
   const [qtd, setQtd] = useState(1);
-  const [valor, setValor] = useState(null);
+  const [valor, setValor] = useState(0);
+
   const { carrinho, setCarrinho } = useCarrinho();
   const navigate = useNavigate();
+
+  async function Carrinho(e) {
+    e.preventDefault();
+    const GetCarrinho = await getCarrinho();
+    console.log(GetCarrinho);
+    let arrayCarrinho = [];
+    arrayCarrinho.push(info[0]);
+    
+   const data =  GetCarrinho?.filter((item) => item.id === info[0].id) || [];
+
+    if (data[0]) {
+      return alert("Produto já está no carrinho");
+    }
+
+
+    if (GetCarrinho) {
+      SetCarrinho([...GetCarrinho, ...arrayCarrinho]);
+      setCarrinho(arrayCarrinho.length);      
+    } else {
+      SetCarrinho(arrayCarrinho);
+      setCarrinho(arrayCarrinho.length);
+    }
+    console.log(arrayCarrinho);
+    // navigate("/carrinho");
+  }
 
   useEffect(() => {
     async function total() {
       if (qtd < 1) {
         setQtd(1);
       }
-
-      let valoeReais = info[0].price;
-      let valorNumber = valoeReais * 10 * qtd;
+      console.log(info);
+      let valorReais = info[0].price;
+      let valorNumber = valorReais * 10 * qtd;
       let real = valorNumber.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL",
@@ -31,17 +58,6 @@ const Info = () => {
     }
     total();
   }, [info, qtd]);
-
-  function Carrinho(e) {
-    e.preventDefault();
-
-    let arrayCarrinho = [];
-    arrayCarrinho.push({ valor: valor, qtd: qtd });
-    arrayCarrinho.push(...info);
-    setCarrinho(arrayCarrinho);
-    console.log(carrinho);
-    navigate("/favoritos");
-  }
 
   return (
     <div className="pt-[100px] pb-5 flex justify-center items-center">
@@ -72,10 +88,10 @@ const Info = () => {
             <div className="flex mt-5 flex-col items-center justify-around gap-y-8">
               <span className="font-bold">Valor total: {valor}</span>
 
-              <div class="disabled">
+              <div className="disabled">
                 <label
                   for="visitors"
-                  class="block pl-2 mb-1 text-sm font-medium text-gray-900 dark:text-gray-300"
+                  className="block pl-2 mb-1 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                   Quatidade
                 </label>
@@ -83,7 +99,7 @@ const Info = () => {
                 <input
                   type="number"
                   id="visitors"
-                  class="bg-gray-50 border disabled outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:border-2 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-purple-600"
+                  className="bg-gray-50 border disabled outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:border-2 focus:border-purple-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-purple-600"
                   placeholder=""
                   required
                   value={qtd}
@@ -91,16 +107,15 @@ const Info = () => {
                 />
               </div>
 
-              <Link
+              <button
                 onClick={Carrinho}
-                to="/favoritos"
                 className="bg-purple-700 hover:bg-purple-600 flex justify-around w-[280px] items-center duration-300 py-3 rounded-lg px-2"
               >
                 <BsFillCartPlusFill className="fill-white text-2xl" />
                 <span className=" text-white font-bold">
                   Adicionar no carrinho
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

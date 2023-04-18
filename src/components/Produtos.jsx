@@ -44,7 +44,7 @@ const Produtos = () => {
   }
 
   return (
-    <div className="">
+    <div className="max-w-[1400px]">
       {loading && <p>Carregando...</p>}
       <div className="mt-6 flex flex-wrap gap-x-6 gap-y-16 justify-center">
         <Tabs
