@@ -22,7 +22,14 @@ const Info = () => {
     const GetCarrinho = await getCarrinho();
     console.log(GetCarrinho);
     let arrayCarrinho = [];
-    arrayCarrinho.push(info[0]);
+    arrayCarrinho.push({
+      id: info[0].id,
+      title: info[0].title,
+      image: info[0].image,
+      price: valor,
+      qtd: qtd,
+      priceTotal: info[0].price * 10 * qtd,
+    });
     
    const data =  GetCarrinho?.filter((item) => item.id === info[0].id) || [];
 
@@ -39,7 +46,7 @@ const Info = () => {
       setCarrinho(arrayCarrinho.length);
     }
     console.log(arrayCarrinho);
-    // navigate("/carrinho");
+    navigate("/carrinho");
   }
 
   useEffect(() => {
